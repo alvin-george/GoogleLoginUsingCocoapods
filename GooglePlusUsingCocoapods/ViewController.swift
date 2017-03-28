@@ -17,6 +17,17 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     @IBOutlet var signInOnButton: GIDSignInButton!
     @IBOutlet var statusLabel: UILabel!
     
+    
+    @IBOutlet var usernameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var profilePicture: UIImageView!
+    @IBOutlet var userIdLabel: UILabel!
+    @IBOutlet var familyNameLabel: UILabel!
+    @IBOutlet var givenNameLabel: UILabel!
+    @IBOutlet var profileDescriptionLabel: UILabel!
+    
+    
+    
     var gid_signinSharedInstance = GIDSignIn.sharedInstance()
     var profileDataDict = [String: AnyObject]()
     
@@ -26,6 +37,15 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         gid_signinSharedInstance?.delegate = self
         gid_signinSharedInstance?.uiDelegate = self
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if(profileDataDict.count != 0){
+            usernameLabel.text = profileDataDict["name"] as! String?
+            
+            
+        }
         
     }
     
@@ -70,32 +90,39 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         
         
         if (error == nil) {
-            // Perform any operations on signed in user here.
             
-            let userId :String = String(user.userID) as String// For client-side use only!
-            let idToken :String = user.authentication.idToken as String  // Safe to send to the server
-            let fullName:String = user.profile.name as String
-            let givenName: String = user.profile.givenName as String
-            let familyName: String = user.profile.familyName as String
-            let email: String = user.profile.email as String
+            // let imageURL = user.profile.imageURL(withDimension: 200)
             
             //Add to Dict
             profileDataDict = ["user_id":user.userID as AnyObject ,"id_token": user.authentication.idToken as AnyObject,"profile_name": user.profile.name as AnyObject,"given_name": user.profile.givenName as AnyObject,"family_name": user.profile.familyName as AnyObject,"email": user.profile.email as AnyObject, "profile_description": user.profile.description as AnyObject]
-            
+          
             print(profileDataDict)
             
             if(user.profile.hasImage){
-                print("profile image available")                
+                print("profile image available")
+                let dimension = round(300 * UIScreen.main.scale);
+                let picURL = user.profile.imageURL(withDimension: UInt(dimension))
+                
+                profilePicture.setRounded()
+                profilePicture.downloadedFrom(url: picURL!)
             }
+            
+            //Display Data
+            usernameLabel.text = profileDataDict["profile_name"] as! String?
+            emailLabel.text = profileDataDict["email"] as! String?
+            userIdLabel.text = profileDataDict["user_id"] as! String?
+            familyNameLabel.text = profileDataDict["family_name"] as! String?
+            givenNameLabel.text = profileDataDict["given_name"] as! String?
+            profileDescriptionLabel.text = profileDataDict["profile_description"] as! String?
+            
+            
         } else {
             print("\(error.localizedDescription)")
         }
         
-        
     }
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!){
         print("logged out")
-        
     }
     
     //UIButton Actions
@@ -117,3 +144,30 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
 }
 
+//ImageView: Extension for
+extension UIImageView {
+    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { () -> Void in
+                self.image = image
+            }
+            }.resume()
+    }
+    
+    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloadedFrom(url: url, contentMode: mode)
+    }
+    func setRounded() {
+        let radius = self.frame.width / 2
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
+    }
+}
