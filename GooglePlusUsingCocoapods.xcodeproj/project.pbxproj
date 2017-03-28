@@ -29,7 +29,7 @@
 		82A141051E8635F4002999B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A1410B1E866ECD002999B2 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		82A1410D1E866ED3002999B2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		82A1410F1E8678C8002999B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		82A1410F1E8678C8002999B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "GooglePlusUsingCocoapods/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A44CFD7F5C527B6FF08F3A32 /* Pods-GooglePlusUsingCocoapods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GooglePlusUsingCocoapods.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GooglePlusUsingCocoapods/Pods-GooglePlusUsingCocoapods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA6A608017BF3F606B2C1009 /* Pods-GooglePlusUsingCocoapods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GooglePlusUsingCocoapods.release.xcconfig"; path = "Pods/Target Support Files/Pods-GooglePlusUsingCocoapods/Pods-GooglePlusUsingCocoapods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +51,7 @@
 		82A140ED1E8635F4002999B2 = {
 			isa = PBXGroup;
 			children = (
+				82A1410F1E8678C8002999B2 /* GoogleService-Info.plist */,
 				82A140F81E8635F4002999B2 /* GooglePlusUsingCocoapods */,
 				82A140F71E8635F4002999B2 /* Products */,
 				8A42F85E9E49EECCBA4616DD /* Pods */,
@@ -75,7 +76,6 @@
 				82A141001E8635F4002999B2 /* Assets.xcassets */,
 				82A141021E8635F4002999B2 /* LaunchScreen.storyboard */,
 				82A141051E8635F4002999B2 /* Info.plist */,
-				82A1410F1E8678C8002999B2 /* GoogleService-Info.plist */,
 			);
 			path = GooglePlusUsingCocoapods;
 			sourceTree = "<group>";

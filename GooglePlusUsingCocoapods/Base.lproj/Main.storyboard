@@ -95,14 +95,38 @@
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RbC-P8-wz4">
+                                        <rect key="frame" x="137" y="142.5" width="70" height="70"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6Xl-S4-wBe">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Som-0E-Qey">
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CBJ-GL-krL">
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="e1j-Yl-9Ic"/>
+                                            <constraint firstAttribute="width" constant="70" id="u4P-nr-f9N"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93333333330000001" green="0.90196078430000004" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="eUR-ks-OBZ" firstAttribute="leading" secondItem="8eW-Y6-Fzn" secondAttribute="leading" constant="5" id="3jc-Er-8Ka"/>
+                                    <constraint firstItem="RbC-P8-wz4" firstAttribute="centerX" secondItem="8eW-Y6-Fzn" secondAttribute="centerX" id="ATA-bl-RiD"/>
                                     <constraint firstItem="F1G-vU-qCr" firstAttribute="leading" secondItem="8eW-Y6-Fzn" secondAttribute="leading" constant="5" id="DSp-j0-4ox"/>
                                     <constraint firstAttribute="trailing" secondItem="eUR-ks-OBZ" secondAttribute="trailing" constant="5" id="KRV-SX-9pf"/>
                                     <constraint firstItem="eUR-ks-OBZ" firstAttribute="top" secondItem="F1G-vU-qCr" secondAttribute="bottom" constant="10" id="gxK-R1-9l5"/>
                                     <constraint firstItem="F1G-vU-qCr" firstAttribute="top" secondItem="8eW-Y6-Fzn" secondAttribute="top" constant="5" id="ka5-Ez-DpX"/>
+                                    <constraint firstItem="RbC-P8-wz4" firstAttribute="centerY" secondItem="8eW-Y6-Fzn" secondAttribute="centerY" id="siX-Tb-h0k"/>
                                     <constraint firstAttribute="trailing" secondItem="F1G-vU-qCr" secondAttribute="trailing" constant="5" id="te9-xr-GOo"/>
                                 </constraints>
                             </view>
